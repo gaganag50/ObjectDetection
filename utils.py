@@ -3,6 +3,7 @@ import torch
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
+import cv2
 
 
 def boxes_iou(box1, box2):
@@ -13,7 +14,7 @@ def boxes_iou(box1, box2):
     width_box2 = box2[2]
     height_box2 = box2[3]
     
-    # Calculate the area of the each bounding box
+        # Calculate the area of the each bounding box
     area_box1 = width_box1 * height_box1
     area_box2 = width_box2 * height_box2
     
@@ -175,10 +176,14 @@ def print_objects(boxes, class_names):
 def plot_boxes(img, boxes, class_names, plot_labels, color = None):
     
     # Define a tensor used to set the colors of the bounding boxes
+    # print ("color", color)
     colors = torch.FloatTensor([[1,0,1],[0,0,1],[0,1,1],[0,1,0],[1,1,0],[1,0,0]])
     
     # Define a function to set the colors of the bounding boxes
     def get_color(c, x, max_val):
+        # print("c",c)
+        # print("x",x)
+        # print("max_val",max_val)
         ratio = float(x) / max_val * 5
         i = int(np.floor(ratio))
         j = int(np.ceil(ratio))
@@ -194,7 +199,7 @@ def plot_boxes(img, boxes, class_names, plot_labels, color = None):
     
     # Create a figure and plot the image
     fig, a = plt.subplots(1,1)
-    a.imshow(img)
+    
     
     # Plot the bounding boxes and corresponding labels on top of the image
     for i in range(len(boxes)):
@@ -210,8 +215,15 @@ def plot_boxes(img, boxes, class_names, plot_labels, color = None):
         y2 = int(np.around((box[1] + box[3]/2.0) * height))
         
         # Set the default rgb value to red
-        rgb = (1, 0, 0)
-            
+        bgr = (0, 0, 1)
+        
+        # print(x1,y1,x2,y2)
+        
+        # print("class_names", class_names)
+        # print("len(box)", len(box))
+        # print("box", box)
+        
+        
         # Use the same color to plot the bounding boxes of the same object class
         if len(box) >= 7 and class_names:
             cls_conf = box[5]
@@ -222,11 +234,14 @@ def plot_boxes(img, boxes, class_names, plot_labels, color = None):
             green = get_color(1, offset, classes) / 255
             blue  = get_color(0, offset, classes) / 255
             
+            
+            
             # If a color is given then set rgb to the given color instead
             if color is None:
-                rgb = (red, green, blue)
+#                 bgr = (blue, green, red)
+                bgr = (blue, green, red)
             else:
-                rgb = color
+                bgr = color
         
         # Calculate the width and height of the bounding box relative to the size of the image.
         width_x = x2 - x1
@@ -234,27 +249,50 @@ def plot_boxes(img, boxes, class_names, plot_labels, color = None):
         
         # Set the postion and size of the bounding box. (x1, y2) is the pixel coordinate of the
         # lower-left corner of the bounding box relative to the size of the image.
-        rect = patches.Rectangle((x1, y2),
-                                 width_x, width_y,
-                                 linewidth = 2,
-                                 edgecolor = rgb,
-                                 facecolor = 'none')
+#         print("rgb", rgb)
+#         rect = patches.Rectangle((x1, y2),
+#                                  width_x, width_y,
+#                                  linewidth = 2,
+#                                  edgecolor = (1,0,1),
+#                                  facecolor = 'none')
 
-        # Draw the bounding box on top of the image
-        a.add_patch(rect)
+#         # Draw the bounding box on top of the image
+#         a.add_patch(rect)
         
+#         print(bgr)
+
+        bgr = tuple(i * 255 for i in bgr)
+        print("color",color)
+        cv2.rectangle(img, (x1, y1), (x2, y2), bgr, 2)
+        
+        
+        
+        
+        
+
+       
         # If plot_labels = True then plot the corresponding label
         if plot_labels:
             
-            # Create a string with the object class name and the corresponding object class probability
+#             # Create a string with the object class name and the corresponding object class probability
             conf_tx = class_names[cls_id] + ': {:.1f}'.format(cls_conf)
             
-            # Define x and y offsets for the labels
+#             # Define x and y offsets for the labels
             lxc = (img.shape[1] * 0.266) / 100
             lyc = (img.shape[0] * 1.180) / 100
             
             # Draw the labels on top of the image
-            a.text(x1 + lxc, y1 - lyc, conf_tx, fontsize = 24, color = 'k',
-                   bbox = dict(facecolor = rgb, edgecolor = rgb, alpha = 0.8))        
-        
-    plt.show()
+            
+            
+            
+            cv2.putText(img, conf_tx, (int(x1 + lxc),int(y1 - lyc)), fontFace = cv2.FONT_HERSHEY_SIMPLEX, fontScale = 0.6,  color = bgr, thickness = 1, lineType = cv2.LINE_AA) 
+#             cv2.rectangle(img, (x1, y2), (x1 + width_x, y2 + width_y), bgr, 1)
+#             cv2.putText(image, 'Fedex', (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (36,255,12), 2)
+
+#             _x1 = int(x1)
+#             _y1 = int(y1)#+int(labelSize[0][1]/2)
+#             _x2 = _x1+int(lxc)
+#             _y2 = y1-int(lyc)
+#             cv2.rectangle(img,(_x1,_y1),(_x2,_y2),bgr,cv2.FILLED)
+#             a.text(x1 + lxc, y1 - lyc, conf_tx, fontsize = 24, color = 'k', bbox = dict(facecolor = rgb, edgecolor = rgb, alpha = 0.1))        
+    return img
