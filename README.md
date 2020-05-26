@@ -8,5 +8,5 @@
 
 ### Objects in video:
 
-![grab-landing-page](https://github.com/gaganag50/ObjectDetection/blob/master/sample_video/sample.gif)
-
+![sample_video](https://github.com/gaganag50/ObjectDetection/blob/master/sample_video/sample.gif)
+![sample_video_output](https://github.com/gaganag50/ObjectDetection/blob/master/sample_video/sample_output.gif)
