@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d988b2c-44d9-4c27-97e2-1b0dc844ff83" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sample_img/savedImage.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sample_video/markdownpad2-setup.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sample_video/sample.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/savedImage.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YOLO.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/YOLO.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +22,8 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../clova/deep-text-recognition-benchmark" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -43,6 +37,9 @@
       <updated>1590403724394</updated>
       <workItem from="1590403731378" duration="146000" />
       <workItem from="1590480829749" duration="554000" />
+      <workItem from="1590559188283" duration="656000" />
+      <workItem from="1591092602081" duration="43000" />
+      <workItem from="1591092683541" duration="85000" />
     </task>
     <servers />
   </component>
@@ -50,14 +47,18 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="186" y="9" key="SettingsEditor" timestamp="1590403865072">
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1591092766371">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="186" y="9" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1590403865072" />
-    <state x="391" y="191" key="com.intellij.ide.util.TipDialog" timestamp="1590481028921">
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1591092766371" />
+    <state x="186" y="9" key="SettingsEditor" timestamp="1590559234455">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="391" y="191" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1590481028921" />
+    <state x="186" y="9" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1590559234455" />
+    <state x="391" y="191" key="com.intellij.ide.util.TipDialog" timestamp="1591092606491">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="391" y="191" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1591092606491" />
     <state x="352" y="46" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1590481169317">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
